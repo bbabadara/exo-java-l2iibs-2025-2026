@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 class Main{
     public static void main(String[] args) {
-       final int taille = 100;
+       final int taille = 1;
        int cpt = 0;
        Scanner sc = new Scanner(System.in);
        String[] noms = new String[taille];
@@ -18,6 +18,7 @@ class Main{
 
             switch (choix) {
                 case 1:
+                    if (cpt<taille) {
                     System.out.println("=======Ajout d'un etudiant=======");
                     sc.nextLine();
                     System.out.println("Entrer le nom");
@@ -30,11 +31,23 @@ class Main{
                     notes[cpt]=sc.nextDouble();
                     cpt++;
                     System.out.println("Etudiant Ajouter avec succes");
+                     } else {
+                        System.out.println("Le tableau est plein");
+                     }
 
                     
                     break;
                 case 2:
                     System.out.println("======Liste des etudiant=====");
+                    for (int i = 0; i < cpt; i++) {
+                        System.out.println("-------------------------");
+                        System.out.println("Nom: "+ noms[i]);
+                        System.out.println("Prenom: "+ prenoms[i]);
+                        System.out.println("Age: "+ ages[i]);
+                        System.out.println("Note: "+ notes[i]);
+                        System.out.println("-------------------------");
+
+                    }
                     break;
                 case 3:
                     System.out.println("Au revoir!");
