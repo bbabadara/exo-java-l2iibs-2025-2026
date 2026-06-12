@@ -11,9 +11,7 @@ class Main{
        double[] notes = new double[taille];
        int choix;
         do {
-            System.out.println("1- Ajouter");
-            System.out.println("2- Lister");
-            System.out.println("3- Quitter");
+            afficheMenu();
             choix = sc.nextInt();
 
             switch (choix) {
@@ -21,14 +19,12 @@ class Main{
                     if (cpt<taille) {
                     System.out.println("=======Ajout d'un etudiant=======");
                     sc.nextLine();
-                    System.out.println("Entrer le nom");
-                    noms[cpt]=sc.nextLine();
-                    System.out.println("Entrer le prenom");
-                    prenoms[cpt]=sc.nextLine();
-                    System.out.println("Entrer l'age");
-                    ages[cpt]=sc.nextInt();
-                    System.out.println("Entrer la note");
-                    notes[cpt]=sc.nextDouble();
+                    
+                    noms[cpt]=saisiString("Entrer le nom", sc);
+                    prenoms[cpt]=saisiString("Entrer le prenom", sc);
+                    ages[cpt]=saisiIntInervalle(sc, 17, 35, "Entrer l'age");
+                    
+                    notes[cpt]=saisiIntInervalle(sc, 0, 20, "Entrer la note");
                     cpt++;
                     System.out.println("Etudiant Ajouter avec succes");
                      } else {
@@ -60,5 +56,36 @@ class Main{
             }
         } while (choix != 3);
 
+    }
+
+    public static void afficheMenu(){
+            System.out.println("1- Ajouter");
+            System.out.println("2- Lister");
+            System.out.println("3- Quitter");
+    }
+    public static String saisiString(String message,Scanner sc) {
+        String choix;
+        do {
+           System.out.println(message);
+            choix = sc.nextLine().trim(); 
+            if (choix.isEmpty()) {
+                System.out.println("La saisie est obligatoire");
+                
+            }
+        } while (choix.isEmpty());
+        return choix;
+    }
+    public static int saisiIntInervalle(Scanner in,int min, int max, String message){
+        int choix;
+        do {
+             System.out.println(message);
+                    choix=in.nextInt();
+                    if (choix<min || choix > max) {
+                        System.out.println("La valeur doit etre "+min+" et "+max);
+                    }
+        } while (choix<min || choix > max);
+
+        return choix;
+        
     }
 }
