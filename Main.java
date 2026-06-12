@@ -3,6 +3,7 @@ import java.util.Scanner;
 class Main{
     public static void main(String[] args) {
        final int taille = 100;
+       int cpt = 0;
        Scanner sc = new Scanner(System.in);
        String[] noms = new String[taille];
        String[] prenoms = new String[taille];
@@ -17,11 +18,23 @@ class Main{
 
             switch (choix) {
                 case 1:
-                    System.out.println("choix: Ajouter");
+                    System.out.println("=======Ajout d'un etudiant=======");
+                    sc.nextLine();
+                    System.out.println("Entrer le nom");
+                    noms[cpt]=sc.nextLine();
+                    System.out.println("Entrer le prenom");
+                    prenoms[cpt]=sc.nextLine();
+                    System.out.println("Entrer l'age");
+                    ages[cpt]=sc.nextInt();
+                    System.out.println("Entrer la note");
+                    notes[cpt]=sc.nextDouble();
+                    cpt++;
+                    System.out.println("Etudiant Ajouter avec succes");
+
                     
                     break;
                 case 2:
-                    System.out.println("choix: Lister");
+                    System.out.println("======Liste des etudiant=====");
                     break;
                 case 3:
                     System.out.println("Au revoir!");
